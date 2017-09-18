@@ -75,7 +75,7 @@ class ProjectsController < ApplicationController
     end
   
     def sort_column
-      Project.column_names.include?(params[:sort]) ? params[:sort] : "name"
+      Project.column_names.include?(params[:sort]) ? params[:sort] : "id"
     end
     
     def sort_direction
