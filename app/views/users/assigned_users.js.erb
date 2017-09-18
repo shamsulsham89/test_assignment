@@ -1,0 +1,3 @@
+$('#project-lists th').css('background-color','#fff');
+$('#project-<%=@project.id%>').css('background-color','#dff0db');
+$("#assigned-users").html('<%= escape_javascript(render  :partial => 'projects/users') %>');

@@ -1,0 +1,44 @@
+<p id="notice"><%= notice %></p>
+
+<div class="row">
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <h4>Projects</h4>
+  </div>
+  <div class="col-xs-12 col-sm-12 col-md-6 col-lg-6">
+    <%= link_to 'New Project', new_project_url, class: "pull-right" %>
+  </div>
+</div>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th><%= sortable "name" %></th>
+      <th><%= sortable "start_date" %></th>
+      <th><%= sortable "end_date" %></th>
+      <th>Status</th>
+      <th><%= sortable "active" %></th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="project-lists">
+    <% @projects.each do |project| %>
+      <tr id="project-<%=project.id%>" onclick="show_users(<%= project.id %>)">
+        <td><%= best_in_place project, :name, :as => :input %></td>
+        <td><%= best_in_place project, :start_date, :as => :date %></td>
+        <td><%= best_in_place project, :end_date, :as => :date %></td>
+        <td><%= best_in_place project, :status, :as => :select, :collection => Project::STATUS %></td>
+        <td><%= best_in_place project, :active, as: :checkbox, collection: {false: "No", true: "Yes"} %></td>
+        <td><%= link_to 'Show', project %></td>
+        <td><%= link_to 'Edit', edit_project_path(project) %></td>
+        <td><%= link_to 'Destroy', project, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<div id="assigned-users">
+  
+</div>

@@ -1,0 +1,19 @@
+<%= select_tag 'assign_user_id', options_for_select(@not_assigned_users.collect{ |u| ["#{u.name} - #{u.email}", u.id] }), prompt: "Allocate new user", onchange: "assign_user_in_project(#{@project.id})"  %>
+
+<table class="table">
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Email</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @users.each do |user| %>
+      <tr>
+        <td><%= user.name %></td>
+        <td><%= user.email %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
